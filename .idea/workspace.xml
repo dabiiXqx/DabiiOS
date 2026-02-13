@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue" value="CppFormatterOtherPage" type="string" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug" ENABLED="true" CONFIG_NAME="Debug" />
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="889db321-d06f-42df-a63a-45e91cec24f9" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/CFiles/handlers.c" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/IDT.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/PIC.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/idt.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/stdlibs.h" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="bSZTC1Bc" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="38VV90oC0almxVuhlVjT6xiebrO" />
+  <component name="ProjectStatusUIService">{
+  &quot;uiKindId&quot;: &quot;Widget&quot;
+}</component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
+    &quot;SHELLCHECK.PATH&quot;: &quot;/Users/khaledashraf/Library/Application Support/JetBrains/CLion2025.3/plugins/Shell Script/shellcheck&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/khaledashraf/Desktop/C_projects/LokiOS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;org.rust.first.attach.projects&quot;: &quot;true&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/KernelFiles/kernel/Assembly" />
+      <recent name="$PROJECT_DIR$/KernelFiles/kernel/CFiles" />
+      <recent name="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles" />
+      <recent name="$PROJECT_DIR$/KernelFiles/kernel/l" />
+      <recent name="$PROJECT_DIR$/bin" />
+    </key>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="889db321-d06f-42df-a63a-45e91cec24f9" name="Changes" comment="" />
+      <created>1768884574394</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1768884574394</updated>
+      <workItem from="1768884576178" duration="811000" />
+      <workItem from="1768889740128" duration="771000" />
+      <workItem from="1768895144615" duration="1816000" />
+      <workItem from="1768899795966" duration="2477000" />
+      <workItem from="1768915678694" duration="6862000" />
+      <workItem from="1768923700563" duration="234000" />
+      <workItem from="1768924713800" duration="1073000" />
+      <workItem from="1768932785707" duration="211000" />
+      <workItem from="1768970958108" duration="687000" />
+      <workItem from="1768971805355" duration="2408000" />
+      <workItem from="1768986617395" duration="193000" />
+      <workItem from="1768987708204" duration="1055000" />
+      <workItem from="1768999358342" duration="2290000" />
+      <workItem from="1769007404026" duration="8619000" />
+      <workItem from="1769017295135" duration="893000" />
+      <workItem from="1769021306792" duration="161000" />
+      <workItem from="1769057891291" duration="296000" />
+      <workItem from="1769059918238" duration="1522000" />
+      <workItem from="1769068214023" duration="4210000" />
+      <workItem from="1769074298031" duration="282000" />
+      <workItem from="1769075610070" duration="3997000" />
+      <workItem from="1769080178797" duration="227000" />
+      <workItem from="1769086461852" duration="1422000" />
+      <workItem from="1769089279727" duration="648000" />
+      <workItem from="1769093707879" duration="143000" />
+      <workItem from="1769099760903" duration="236000" />
+      <workItem from="1769101016655" duration="16000" />
+      <workItem from="1769248980855" duration="46000" />
+      <workItem from="1769254900226" duration="49000" />
+      <workItem from="1769254962807" duration="425000" />
+      <workItem from="1769319184060" duration="407000" />
+      <workItem from="1769501257250" duration="248000" />
+      <workItem from="1769501723217" duration="220000" />
+      <workItem from="1769501991310" duration="85000" />
+      <workItem from="1769574431381" duration="6482000" />
+      <workItem from="1769659230063" duration="1343000" />
+      <workItem from="1769795262093" duration="1841000" />
+      <workItem from="1769960799256" duration="141000" />
+      <workItem from="1770004477064" duration="30000" />
+      <workItem from="1770027114356" duration="480000" />
+      <workItem from="1770035431036" duration="1197000" />
+      <workItem from="1770093621789" duration="252000" />
+      <workItem from="1770095990128" duration="13000" />
+      <workItem from="1770099217088" duration="21000" />
+      <workItem from="1770099291068" duration="521000" />
+      <workItem from="1770102921231" duration="603000" />
+      <workItem from="1770107886534" duration="1772000" />
+      <workItem from="1770133613646" duration="301000" />
+      <workItem from="1770179211125" duration="176000" />
+      <workItem from="1770180270222" duration="1501000" />
+      <workItem from="1770276866733" duration="2000" />
+      <workItem from="1770608073895" duration="110000" />
+      <workItem from="1770610026483" duration="2064000" />
+      <workItem from="1770621189279" duration="1223000" />
+      <workItem from="1770624491047" duration="22000" />
+      <workItem from="1770629463903" duration="1616000" />
+      <workItem from="1770695129613" duration="1907000" />
+      <workItem from="1770697703405" duration="1154000" />
+      <workItem from="1770702193355" duration="160000" />
+      <workItem from="1770704152108" duration="746000" />
+      <workItem from="1770707912234" duration="1482000" />
+      <workItem from="1770709635226" duration="2231000" />
+      <workItem from="1770717397077" duration="1107000" />
+      <workItem from="1770750465047" duration="216000" />
+      <workItem from="1770782927114" duration="4212000" />
+      <workItem from="1770797213584" duration="312000" />
+      <workItem from="1770797627615" duration="261000" />
+      <workItem from="1770797959766" duration="1557000" />
+      <workItem from="1770800731871" duration="3276000" />
+      <workItem from="1770805492567" duration="639000" />
+      <workItem from="1770815169740" duration="7330000" />
+      <workItem from="1770823218128" duration="3266000" />
+      <workItem from="1770830676652" duration="797000" />
+      <workItem from="1770831505060" duration="335000" />
+      <workItem from="1770835447443" duration="1553000" />
+      <workItem from="1770861046476" duration="283000" />
+      <workItem from="1770869129909" duration="964000" />
+      <workItem from="1770872542960" duration="814000" />
+      <workItem from="1770880018042" duration="182000" />
+      <workItem from="1770880272202" duration="5164000" />
+      <workItem from="1770891695783" duration="61000" />
+      <workItem from="1770900832208" duration="107000" />
+      <workItem from="1770921101386" duration="4478000" />
+      <workItem from="1770968317651" duration="5994000" />
+      <workItem from="1770990955446" duration="90000" />
+      <workItem from="1770991058099" duration="97000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
