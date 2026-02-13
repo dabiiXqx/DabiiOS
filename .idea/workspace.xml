@@ -18,7 +18,12 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="889db321-d06f-42df-a63a-45e91cec24f9" name="Changes" comment="" />
+    <list default="true" id="889db321-d06f-42df-a63a-45e91cec24f9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/kernel32.c" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/kernel32.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/kernel32.bin" beforeDir="false" afterPath="$PROJECT_DIR$/bin/kernel32.bin" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,6 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;dabiiXqx&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/dabiiXqx/DabiiOS.git&quot;,
+    &quot;accountId&quot;: &quot;39e45e38-1796-4c18-8830-ceb96489c4d7&quot;
+  }
+}</component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/CFiles/handlers.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/IDT.h" root0="FORCE_HIGHLIGHTING" />
@@ -58,11 +75,13 @@
     &quot;RunOnceActivity.RadMigrateCodeStyle&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.typescript.service.memoryLimit.init&quot;: &quot;true&quot;,
     &quot;SHELLCHECK.PATH&quot;: &quot;/Users/khaledashraf/Library/Application Support/JetBrains/CLion2025.3/plugins/Shell Script/shellcheck&quot;,
     &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
     &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
     &quot;last_opened_file_path&quot;: &quot;/Users/khaledashraf/Desktop/C_projects/LokiOS&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
@@ -175,7 +194,8 @@
       <workItem from="1770921101386" duration="4478000" />
       <workItem from="1770968317651" duration="5994000" />
       <workItem from="1770990955446" duration="90000" />
-      <workItem from="1770991058099" duration="97000" />
+      <workItem from="1770991058099" duration="403000" />
+      <workItem from="1770991562383" duration="1154000" />
     </task>
     <servers />
   </component>
