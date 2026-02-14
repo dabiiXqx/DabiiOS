@@ -4,4 +4,4 @@
 #include <stdint.h>
 
 void *kmemset(void *s, int c, size_t n);
-void WriteToVGA(const char* text, uint8_t fg, uint8_t bg, int Halt);
+void WriteToVGA(const char* text, uint8_t fg, uint8_t bg, _Bool Halt);

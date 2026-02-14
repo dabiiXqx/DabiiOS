@@ -9,7 +9,7 @@ void *kmemset(void *s, int c, size_t n) {
     }
     return s; //returns modified char array
 }
-void WriteToVGA(const char* text, uint8_t fg, uint8_t bg, int Halt) {
+void WriteToVGA(const char* text, uint8_t fg, uint8_t bg, _Bool Halt) {
     volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
     uint16_t attr = (bg << 4) | fg;
     for (int i = 0; i < 80*25; i++) {
