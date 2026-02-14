@@ -19,7 +19,7 @@ idt_noerr%1:
     jmp isr_common_stub
 %endmacro
 
-extern dummy_handler
+extern C_handlers
 
 ISR_NOERR 0
 ISR_NOERR 1
@@ -61,8 +61,6 @@ isr_common_stub:
     mov es, ax
     mov fs, ax
     mov gs, ax
-
-    jmp dummy_handler
 
     popad
     iret
