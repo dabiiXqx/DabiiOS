@@ -1,3 +1,6 @@
+WARNING, THIS OS IS INCOMPLETE AND IN ALPHA DEVELOPMENT, DO NOT FORK OR TRY ANYTHING UNTIL OS IS HALF COMPLETE OR FULLY COMPLETE
+
+
 hi to whoever is reading this, did you ever see a lone 13 year old trying to make a kernel?
 no? well here i am, writing this. this file is supposed to help me cope with whatever's not working,
 especially the interrupt descriptor table. that's all i have to say, so cya next time
