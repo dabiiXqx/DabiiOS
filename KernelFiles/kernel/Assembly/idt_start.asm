@@ -54,6 +54,7 @@ ISR_NOERR 29
 ISR_NOERR 30
 ISR_NOERR 31
 
+//CURRENTLY INCOMPLETE!!!!!!!!!!!!!!!!!!!!!
 isr_common_stub:
     pushad
     mov ax, 0x10
