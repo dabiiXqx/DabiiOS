@@ -1,0 +1,3 @@
+hi to whoever is reading this, did you ever see a lone (horny) 13 year old trying to make a kernel?
+no? well here i am, writing this. this file is supposed to help me cope with whatever's not working,
+especially the interrupt descriptor table. that's all i have to say, so cya next time

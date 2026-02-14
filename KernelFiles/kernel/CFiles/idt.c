@@ -34,6 +34,7 @@ __attribute__ ((interrupt)) void dummy_handler(struct interrupt_frame *frame) {
     }
 }
 
+//Right now, the install function isn't finished, im finishing it later.
 void install_idt(void) {
     kmemset(idt, 0, sizeof(idt));
     idtp.limit = sizeof(idt) - 1;
