@@ -40,5 +40,8 @@ void install_idt(void) {
     idtp.limit = sizeof(idt) - 1;
     idtp.base = (uint32_t)idt;
 
-
+	for (int i = 0; i < 32; i++) {
+		setIDTgate(i, (uint32_t)&dummy_handler, (uint8_t)0, (uint8_t)0x8E);
+	}
+	load_idt();
 }
