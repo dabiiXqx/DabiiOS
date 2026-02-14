@@ -1,6 +1,5 @@
-#ifndef DABIIOS_IDT_H
-#define DABIIOS_IDT_H
-
+#pragma once
+#include "../HeaderFiles/kernel32.h"
 #include <stdint.h>
 
 struct idt_entry {
@@ -15,5 +14,3 @@ struct idt_ptr {
 	uint16_t limit;
 	uint32_t base;
 } __attribute__((packed));
-
-#endif
