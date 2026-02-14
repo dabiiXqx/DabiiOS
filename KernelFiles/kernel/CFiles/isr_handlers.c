@@ -1,7 +1,7 @@
 #include "../headerFiles/kernel32.h"
 typedef void (*Handlers)(void);
-//CURRENTLY INCOMPLETE!!!!!!!!!!!!!!!!!!!!!
-const char* emsg = {
+//Now handlers are valid, but dont do anything. in beta phase
+const char* emsg[32] = {
     "Division By Zero", // 0
     "Debug", // 1
     "Non Maskable Interrupt", // 2
@@ -37,131 +37,131 @@ const char* emsg = {
 };
 
 void DE_exception(){
-	VGA(emsg[0], 0xf, 0x7, 1)
+	VGA(emsg[0], 0xf, 0x7, 1);
 }
 
 void DB_exception(){
-	VGA(emsg[1], 0xf, 0x7, 1)
+	VGA(emsg[1], 0xf, 0x7, 1);
 }
 
 void NMI_exception(){
-	VGA(emsg[2], 0xf, 0x7, 1)
+	VGA(emsg[2], 0xf, 0x7, 1);
 }
 
 void BP_exception(){
-	VGA(emsg[3], 0xf, 0x7, 1)
+	VGA(emsg[3], 0xf, 0x7, 1);
 }
 
 void OF_exception(){
-	VGA(emsg[4], 0xf, 0x7, 1)
+	VGA(emsg[4], 0xf, 0x7, 1);
 }
 
 void BR_exception(){
-	VGA(emsg[5], 0xf, 0x7, 1)
+	VGA(emsg[5], 0xf, 0x7, 1);
 }
 
 void UD_exception(){
-	VGA(emsg[6], 0xf, 0x7, 1)
+	VGA(emsg[6], 0xf, 0x7, 1);
 }
 
 void NM_exception(){
-	VGA(emsg[7], 0xf, 0x7, 1)
+	VGA(emsg[7], 0xf, 0x7, 1);
 }
 
 void DF_exception(){
-	VGA(emsg[8], 0xf, 0x7, 1)
+	VGA(emsg[8], 0xf, 0x7, 1);
 }
 
 void CSO_exception(){
-	VGA(emsg[9], 0xf, 0x7, 1)
+	VGA(emsg[9], 0xf, 0x7, 1);
 }
 
 void TS_exception(){
-	VGA(emsg[10], 0xf, 0x7, 1)
+	VGA(emsg[10], 0xf, 0x7, 1);
 }
 
 void NP_exception(){
-	VGA(emsg[11], 0xf, 0x7, 1)
+	VGA(emsg[11], 0xf, 0x7, 1);
 }
 
 void SS_exception(){
-	VGA(emsg[12], 0xf, 0x7, 1)
+	VGA(emsg[12], 0xf, 0x7, 1);
 }
 
 void GP_exception(){
-	VGA(emsg[13], 0xf, 0x7, 1)
+	VGA(emsg[13], 0xf, 0x7, 1);
 }
 
 void PF_exception(){
-	VGA(emsg[14], 0xf, 0x7, 1)
+	VGA(emsg[14], 0xf, 0x7, 1);
 }
 
 void res15_exception(){
-	VGA(emsg[15], 0xf, 0x7, 1)
+	VGA(emsg[15], 0xf, 0x7, 1);
 }
 
 void MF_exception(){
-	VGA(emsg[16], 0xf, 0x7, 1)
+	VGA(emsg[16], 0xf, 0x7, 1);
 }
 
 void AC_exception(){
-	VGA(emsg[17], 0xf, 0x7, 1)
+	VGA(emsg[17], 0xf, 0x7, 1);
 }
 
 void MC_exception(){
-	VGA(emsg[18], 0xf, 0x7, 1)
+	VGA(emsg[18], 0xf, 0x7, 1);
 }
 
 void XM_exception(){
-	VGA(emsg[19], 0xf, 0x7, 1)
+	VGA(emsg[19], 0xf, 0x7, 1);
 }
 
 void VE_exception(){
-	VGA(emsg[20], 0xf, 0x7, 1)
+	VGA(emsg[20], 0xf, 0x7, 1);
 }
 
 void CP_exception(){ //CP doesn't mean CSAM material here, it's an exception mnemonic.
-	VGA(emsg[21], 0xf, 0x7, 1)
+	VGA(emsg[21], 0xf, 0x7, 1);
 }
 
 void res22_exception(){
-	VGA(emsg[22], 0xf, 0x7, 1)
+	VGA(emsg[22], 0xf, 0x7, 1);
 }
 
 void res23_exception(){
-	VGA(emsg[23], 0xf, 0x7, 1)
+	VGA(emsg[23], 0xf, 0x7, 1);
 }
 
 void res24_exception(){
-	VGA(emsg[24], 0xf, 0x7, 1)
+	VGA(emsg[24], 0xf, 0x7, 1);
 }
 
 void res25_exception(){
-	VGA(emsg[25], 0xf, 0x7, 1)
+	VGA(emsg[25], 0xf, 0x7, 1);
 }
 
 void res26_exception(){
-	VGA(emsg[26], 0xf, 0x7, 1)
+	VGA(emsg[26], 0xf, 0x7, 1);
 }
 
 void res27_exception(){
-	VGA(emsg[27], 0xf, 0x7, 1)
+	VGA(emsg[27], 0xf, 0x7, 1);
 }
 
 void res28_exception(){
-	VGA(emsg[28], 0xf, 0x7, 1)
+	VGA(emsg[28], 0xf, 0x7, 1);
 }
 
 void res29_exception(){
-	VGA(emsg[29], 0xf, 0x7, 1)
+	VGA(emsg[29], 0xf, 0x7, 1);
 }
 
 void res30_exception(){
-	VGA(emsg[30], 0xf, 0x7, 1)
+	VGA(emsg[30], 0xf, 0x7, 1);
 }
 
 void res31_exception(){
-	VGA(emsg[31], 0xf, 0x7, 1)
+	VGA(emsg[31], 0xf, 0x7, 1);
 }
 Handlers func_table[32] = {
 	DE_exception,

@@ -5,21 +5,21 @@ load_idt:
     ret
 
 %macro ISR_ERR 1
-global idt_err%1
-idt_err%1:
+global isr_err%1
+isr_err%1:
     push %1
     jmp isr_common_stub
 %endmacro
 
 %macro ISR_NOERR 1
-global idt_noerr%1
-idt_noerr%1:
+global isr_noerr%1
+isr_noerr%1:
     push 0
     push %1
     jmp isr_common_stub
 %endmacro
 
-extern C_handlers
+extern func_table
 
 ISR_NOERR 0
 ISR_NOERR 1
@@ -54,7 +54,6 @@ ISR_NOERR 29
 ISR_NOERR 30
 ISR_NOERR 31
 
-//CURRENTLY INCOMPLETE!!!!!!!!!!!!!!!!!!!!!
 isr_common_stub:
     pushad
     mov ax, 0x10
@@ -62,7 +61,9 @@ isr_common_stub:
     mov es, ax
     mov fs, ax
     mov gs, ax
-
+    mov eax, [esp + 32]
+    mov ecx, [func_table + eax*4]
+    call ecx
     popad
     iret
 
