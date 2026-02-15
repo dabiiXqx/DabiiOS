@@ -7,9 +7,34 @@ especially the interrupt descriptor table. that's all i have to say, so cya next
 
 
 
-DATE: 14/2/2026 TIME: 10:37
+DATE: 14/2/2026 TIME: 10:37 AM
 for some reason this stupid IDT refuses to work, i dont understand what's going on, is it the-
 memory layout or am i setting gates incorrectly? the EIP keeps going to 0x3 for seemingly
 no reason.
 
 might be because of this? "Section: .bss (0x3)"
+
+DATE: 15/2/2026 TIME: 9:37 AM
+
+WHAT KIND OF GARBAGE IS THIS
+
+SMM: after RSM
+EAX=000000b5 EBX=00007d47 ECX=00005678 EDX=00000003
+ESI=06f31fb0 EDI=06ffee71 EBP=0000695c ESP=0000695c
+EIP=00007d47 EFL=00000006 [-----P-] CPL=0 II=0 A20=1 SMM=0 HLT=0
+ES =da80 000da800 ffffffff 00809300
+CS =f000 000f0000 ffffffff 00809b00
+SS =0000 00000000 ffffffff 00809300
+DS =0000 00000000 ffffffff 00809300
+FS =0000 00000000 ffffffff 00809300
+GS =ca00 000ca000 ffffffff 00809300
+LDT=0000 00000000 0000ffff 00008200
+TR =0000 00000000 0000ffff 00008b00
+GDT=     00000000 00000000
+IDT=     00000000 000003ff
+CR0=00000010 CR2=00000000 CR3=00000000 CR4=00000000
+DR0=00000000 DR1=00000000 DR2=00000000 DR3=00000000
+DR6=ffff0ff0 DR7=00000400
+CCS=00000004 CCD=00000001 CCO=EFLAGS
+EFER=0000000000000000
+check_exception old: 0xffffffff new 0x6

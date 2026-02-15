@@ -9,10 +9,6 @@ mov ss, ax
 mov sp, 0x7c00
 mov bp, sp
 
-in al, 0x92
-or al, 00000010b
-out 0x92, al
-
 mov bx, KERNELOC
 mov ah, 0x02
 mov al, 7
@@ -34,6 +30,10 @@ clear:
     int 0x10
 CODE_SEG equ gdt_code - gdt_start
 DATA_SEG equ gdt_data - gdt_start
+
+in al, 0x92
+or al, 00000010b
+out 0x92, al
 
 cli
 lgdt[gdt_desc]
@@ -68,6 +68,7 @@ gdt_start:
 
     [bits 32]
     protect:
+
         mov ax, DATA_SEG
         mov ds, ax
         mov ss, ax

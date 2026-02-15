@@ -1,9 +1,3 @@
-global load_idt
-extern idtp
-load_idt:
-    lidt [idtp]
-    ret
-
 %macro ISR_ERR 1
 global isr_err%1
 isr_err%1:

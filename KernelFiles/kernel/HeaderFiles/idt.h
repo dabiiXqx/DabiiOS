@@ -12,7 +12,7 @@ struct idt_entry {
 
 struct idt_ptr {
 	uint16_t limit;
-	uint32_t base;
+	struct idt_entry * base;
 } __attribute__((packed));
 
 void install_idt(void);

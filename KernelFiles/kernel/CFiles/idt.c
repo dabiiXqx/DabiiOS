@@ -3,7 +3,6 @@
 
 //I have no idea what i'm doing with my life.
 
-extern void load_idt(void);
 
 struct idt_entry idt[256];
 
@@ -17,10 +16,14 @@ void setIDTgate(uint8_t vector, uint32_t base, uint8_t flags) {
     idt[vector].always0 = 0;
 }
 
+void idt_flush(struct idt_ptr *idtp) {
+	__asm__ __volatile__("lidt %0" : : "m"(*idtp) :);
+}
+
 void install_idt(void) {
     kmemset(idt, 0, sizeof(idt));
     idtp.limit = sizeof(idt) - 1;
-    idtp.base = (uint32_t)idt;
+    idtp.base = (struct idt_entry*)&idt;
 
     setIDTgate(0, (uint32_t)isr_noerr0, 0x8E);
     setIDTgate(1, (uint32_t)isr_noerr1, 0x8E);
@@ -55,5 +58,5 @@ void install_idt(void) {
     setIDTgate(30, (uint32_t)isr_noerr30, 0x8E);
     setIDTgate(31, (uint32_t)isr_noerr31, 0x8E);
 
-	load_idt();
+	idt_flush((struct idt_ptr*)&idtp);
 }
