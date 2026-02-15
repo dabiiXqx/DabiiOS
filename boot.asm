@@ -11,7 +11,7 @@ mov bp, sp
 
 mov bx, KERNELOC
 mov ah, 0x02
-mov al, 7
+mov al, 6
 mov ch, 0
 mov dh, 0
 mov cl, 2
@@ -28,8 +28,9 @@ clear:
     mov ah, 0x0
     mov al, 0x03
     int 0x10
-CODE_SEG equ gdt_code - gdt_start
-DATA_SEG equ gdt_data - gdt_start
+
+CODE_SEG equ 0x8
+DATA_SEG equ 0x10
 
 in al, 0x92
 or al, 00000010b
