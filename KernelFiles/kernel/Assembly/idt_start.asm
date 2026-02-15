@@ -59,5 +59,6 @@ isr_common_stub:
     mov ecx, [func_table + eax*4]
     call ecx
     popad
+    add esp, 8
     iret
 

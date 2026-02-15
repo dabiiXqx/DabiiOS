@@ -80,7 +80,7 @@ gdt_start:
         mov ebp, 0x90000
         mov esp, ebp
 
-        jmp 0x9000
+        jmp KERNELOC
 
 times 510-($-$$) db 0
 dw 0xaa55
