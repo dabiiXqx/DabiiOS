@@ -29,7 +29,7 @@ clear:
     mov al, 0x03
     int 0x10
 
-CODE_SEG equ 0x8
+CODE_SEG equ 0x08
 DATA_SEG equ 0x10
 
 in al, 0x92
@@ -69,7 +69,7 @@ gdt_start:
 
     [bits 32]
     protect:
-
+        cli
         mov ax, DATA_SEG
         mov ds, ax
         mov ss, ax
@@ -77,11 +77,10 @@ gdt_start:
         mov fs, ax
         mov gs, ax
 
-
         mov ebp, 0x90000
         mov esp, ebp
 
-        jmp KERNELOC
+        jmp 0x972e
 
 times 510-($-$$) db 0
 dw 0xaa55

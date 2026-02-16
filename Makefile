@@ -48,3 +48,5 @@ disk:
 clean:
 	rm -f KernelFiles/kernel/Assembly/*.o
 	rm -f KernelFiles/kernel/CFiles/*.o
+ReadBoot:
+	 x86_64-elf-objdump -D -b binary -m i386 -M intel --adjust-vma=0x7C00 bin/boot.bin

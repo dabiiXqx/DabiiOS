@@ -19,12 +19,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="889db321-d06f-42df-a63a-45e91cec24f9" name="Changes" comment="Hard stuff">
-      <change afterPath="$PROJECT_DIR$/.idea/DabiiOS.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/COPE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/COPE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/Assembly/kernel.asm" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/Assembly/kernel.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/idt.c" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/idt.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/kernel32.c" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/kernel32.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/util.c" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/util.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/LinkerScript/linker.ld" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/LinkerScript/linker.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/boot.asm" beforeDir="false" afterPath="$PROJECT_DIR$/boot.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -203,7 +207,11 @@
       <workItem from="1771150953494" duration="5955000" />
       <workItem from="1771169887957" duration="548000" />
       <workItem from="1771173208765" duration="617000" />
-      <workItem from="1771178661530" duration="209000" />
+      <workItem from="1771178661530" duration="413000" />
+      <workItem from="1771216084543" duration="732000" />
+      <workItem from="1771218603306" duration="2559000" />
+      <workItem from="1771242478914" duration="2810000" />
+      <workItem from="1771250103884" duration="7229000" />
     </task>
     <task id="LOCAL-00001" summary="Hard stuff">
       <option name="closed" value="true" />
@@ -213,7 +221,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771158075941</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Hard stuff">
+      <option name="closed" value="true" />
+      <created>1771179023430</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1771179023430</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

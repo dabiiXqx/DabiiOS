@@ -1,4 +1,3 @@
-global kernel_header
 section .text
     [bits 32]
     [extern kernel_main]

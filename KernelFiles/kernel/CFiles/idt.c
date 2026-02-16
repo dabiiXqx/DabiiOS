@@ -16,7 +16,7 @@ void setIDTgate(uint8_t vector, void* isr, uint8_t flags) {
     idt[vector].always0 = 0;
 }
 
-void idt_flush(struct idt_ptr idtp) {
+void idt_flush(struct idt_ptr* idtp) {
 	asm volatile (
         "lidt %0"
         : : "m"(idtp)
@@ -25,7 +25,7 @@ void idt_flush(struct idt_ptr idtp) {
 
 void install_idt(void) {
     kmemset(idt, 0, sizeof(idt));
-    idtp.limit = sizeof(idt) - 1;
+    idtp.limit = sizeof(struct idt_entry) * 256 - 1;
     idtp.base = (struct idt_entry*)&idt;
 
     setIDTgate(0, isr_noerr0, 0x8E);
@@ -61,5 +61,5 @@ void install_idt(void) {
     setIDTgate(30, isr_noerr30, 0x8E);
     setIDTgate(31, isr_noerr31, 0x8E);
 
-	idt_flush((struct idt_ptr)idtp);
+	idt_flush(&idtp);
 }

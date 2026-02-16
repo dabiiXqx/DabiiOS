@@ -7,3 +7,22 @@ memory layout or am i setting gates incorrectly? the EIP keeps going to 0x3 for 
 no reason.
 
 might be because of this? "Section: .bss (0x3)"
+
+
+DATE: 16/2/2026 TIME: 8:40 AM
+I noticed that GDTR = 0 when EIP is normal, (not pointing to 0x3)
+But when EIP = 0x3, GDTR is not 0. cool pattern.
+
+Holy shit, i realized that the IDT points to the IVT (IDT=     00000000 000003ff)
+and the cpu is probably getting an exception, so it jumps to 0x3 (to the IVT) and executes.
+Hence causing a UD.
+
+TIME: 6:12 PM
+I also realized that the zeroed gdt is when cr0 bit 0 was not enabled, which is normal behaviour,
+it's in real mode, this is normal. nothing is wrong with my GDT. this was a reset. but for some reason
+my cpu keeps switching from real mode to protected mode.
+
+TIME: 8:11 PM
+
+my idt finally worked, it worked, it actually worked. all i had to do is to change the
+damn address my bootloader jumps to. now i need to fix the isr_common_stub.

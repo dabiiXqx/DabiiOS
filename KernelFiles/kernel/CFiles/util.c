@@ -20,7 +20,7 @@ void VGA(const char* text, uint8_t fg, uint8_t bg, _Bool Halt) {
     }
     if (Halt) {
         while (1) {
-            asm("hlt");
+            asm volatile("hlt");
         }
     }
 

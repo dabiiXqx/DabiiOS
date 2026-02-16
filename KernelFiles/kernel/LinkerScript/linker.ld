@@ -4,8 +4,19 @@ ENTRY(kernel_main)
 SECTIONS
 {
     . = 0x9000; /* load address */
-    .text : { *(.text) }
-    .rodata : { *(.rodata) }
-    .data : { *(.data) }
-    .bss : { *(.bss) *(COMMON) }
+    .text :
+    {
+    *(.text)
+    }
+    .rodata  :
+    {
+    *(.rodata)
+    }
+    .data :
+    {
+     *(.data)
+     }
+    .bss  :
+    { *(.bss) *(COMMON)
+    }
 }
