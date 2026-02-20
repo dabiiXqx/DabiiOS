@@ -1,19 +1,32 @@
+[bits 32]
 %macro ISR_ERR 1
-global isr_err%1
-isr_err%1:
+global isr%1
+isr%1:
     push %1
-    jmp isr_common_stub
+    jmp isr_common
 %endmacro
 
 %macro ISR_NOERR 1
-global isr_noerr%1
-isr_noerr%1:
+global isr%1
+isr%1:
     push 0
     push %1
-    jmp isr_common_stub
+    jmp isr_common
 %endmacro
 
-extern func_table
+section .text
+
+extern func_table ;from isr_handlers.c
+
+;grabs the interrupt vector number, uses it as an index to the func_table array and calls it.
+isr_common:
+    pushad
+    mov eax, [esp+32]
+    mov ecx, [func_table + eax*4]
+    call ecx
+    popad
+    iret
+
 
 ISR_NOERR 0
 ISR_NOERR 1
@@ -47,18 +60,4 @@ ISR_NOERR 28
 ISR_NOERR 29
 ISR_NOERR 30
 ISR_NOERR 31
-
-isr_common_stub:
-    pushad
-    mov ax, 0x10
-    mov ds, ax
-    mov es, ax
-    mov fs, ax
-    mov gs, ax
-    mov eax, [esp + 32]
-    mov ecx, [func_table + eax*4]
-    call ecx
-    popad
-    add esp, 8
-    iret
 

@@ -26,3 +26,12 @@ TIME: 8:11 PM
 
 my idt finally worked, it worked, it actually worked. all i had to do is to change the
 damn address my bootloader jumps to. now i need to fix the isr_common_stub.
+
+18/2/2026 TIME: 7:33 PM
+
+(gdb) p/x idtp
+$1 = {limit = 0x7ff, base = 0x9320}
+
+normal idt pointer struct, normal everything.
+
+even stack is normal

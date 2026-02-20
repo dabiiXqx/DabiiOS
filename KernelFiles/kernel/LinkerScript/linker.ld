@@ -4,6 +4,10 @@ ENTRY(kernel_main)
 SECTIONS
 {
     . = 0x9000; /* load address */
+    .kernelmain :
+    {
+        KEEP(*(.kernel_main))
+    }
     .text :
     {
     *(.text)

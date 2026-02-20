@@ -1,65 +1,56 @@
 #include "../HeaderFiles/kernel32.h"
 #include <stdint.h>
 
-//I have no idea what i'm doing with my life.
+struct idt_gate idt[256];
 
+struct idt_descriptor idtp;
 
-struct idt_entry idt[256];
-
-struct idt_ptr idtp;
-
-void setIDTgate(uint8_t vector, void* isr, uint8_t flags) {
-    idt[vector].base_low = ((uint32_t)isr & 0xFFFF);
-    idt[vector].base_high = ((uint32_t)isr >> 16) & 0xFFFF;
-    idt[vector].flags = flags;
-    idt[vector].selector = (uint16_t)0x08;
-    idt[vector].always0 = 0;
+void set_idt_gate(void *handler, uint8_t vector, uint8_t attributes){
+	idt[vector].offset_low = (uint32_t)handler & 0xffff; //grabs least significant 16 bits
+	idt[vector].selector = 0x8;
+	idt[vector].zero = 0;
+	idt[vector].attributes = attributes;
+	idt[vector].offset_high = ((uint32_t)handler >> 16) & 0xffff;
 }
 
-void idt_flush(struct idt_ptr* idtp) {
-	asm volatile (
-        "lidt %0"
-        : : "m"(idtp)
-    );
+
+void idt_flush(struct idt_descriptor *idtp){
+	//THE IDT POINTER IS NORMAL
+	asm volatile("lidt %0" : : "m" (idtp));
+	asm volatile("sidt %0" : : "m" (idtp));
+}
+void pic_init(void){
+	/* currently not used, testing IDT and ISRs before enabling
+	 * hardware peripheral/software interrupts. */
+	outb(0x20, 0x11);
+	outb(0xA0, 0x11);
+
+	outb(0x21, 32);
+	outb(0xA1, 40);
+
+	outb(0x21, 4);
+	outb(0xA1, 2);
+
+	outb(0x21, 1);
+	outb(0xA1, 1);
+
+	outb(0x21, 0xFD);
+	outb(0xA1, 0xFF);
 }
 
-void install_idt(void) {
-    kmemset(idt, 0, sizeof(idt));
-    idtp.limit = sizeof(struct idt_entry) * 256 - 1;
-    idtp.base = (struct idt_entry*)&idt;
+void (*isr_functions[32])(void) = {
+	isr0, isr1, isr2, isr3, isr4, isr5, isr6, isr7, isr8, isr9,
+	isr10, isr11, isr12, isr13, isr14, isr15, isr16, isr17,
+	isr18, isr19, isr20, isr21, isr22, isr23, isr24, isr25,
+	isr26, isr27, isr28, isr29, isr30, isr31
+};
 
-    setIDTgate(0, isr_noerr0, 0x8E);
-    setIDTgate(1, isr_noerr1, 0x8E);
-    setIDTgate(2, isr_noerr2, 0x8E);
-    setIDTgate(3, isr_noerr3, 0x8E);
-    setIDTgate(4, isr_noerr4, 0x8E);
-    setIDTgate(5, isr_noerr5, 0x8E);
-    setIDTgate(6, isr_noerr6, 0x8E);
-    setIDTgate(7, isr_noerr7, 0x8E);
-    setIDTgate(8, isr_err8, 0x8E);
-    setIDTgate(9, isr_noerr9, 0x8E);
-    setIDTgate(10, isr_err10, 0x8E);
-    setIDTgate(11, isr_err11, 0x8E);
-    setIDTgate(12, isr_err12, 0x8E);
-    setIDTgate(13, isr_err13, 0x8E);
-    setIDTgate(14, isr_err14, 0x8E);
-    setIDTgate(15, isr_noerr15, 0x8E);
-    setIDTgate(16, isr_noerr16, 0x8E);
-    setIDTgate(17, isr_err17, 0x8E);
-    setIDTgate(18, isr_noerr18, 0x8E);
-    setIDTgate(19, isr_noerr19, 0x8E);
-    setIDTgate(20, isr_noerr20, 0x8E);
-    setIDTgate(21, isr_err21, 0x8E);
-    setIDTgate(22, isr_noerr22, 0x8E);
-    setIDTgate(23, isr_noerr23, 0x8E);
-    setIDTgate(24, isr_noerr24, 0x8E);
-    setIDTgate(25, isr_noerr25, 0x8E);
-    setIDTgate(26, isr_noerr26, 0x8E);
-    setIDTgate(27, isr_noerr27, 0x8E);
-    setIDTgate(28, isr_noerr28, 0x8E);
-    setIDTgate(29, isr_noerr29, 0x8E);
-    setIDTgate(30, isr_noerr30, 0x8E);
-    setIDTgate(31, isr_noerr31, 0x8E);
-
+void idt_init(void){
+	kmemset(&idt, 0, sizeof(idt));
+	idtp.limit = sizeof(idt) - 1;
+	idtp.base = (uint32_t)&idt;
+	for(int i = 0; i < 32; i++){
+		set_idt_gate(isr_functions[i], i, 0x8E);
+	}
 	idt_flush(&idtp);
 }

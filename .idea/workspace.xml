@@ -18,9 +18,19 @@
     </configurations>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="889db321-d06f-42df-a63a-45e91cec24f9" name="Changes" comment="Finally?">
+    <list default="true" id="889db321-d06f-42df-a63a-45e91cec24f9" name="Changes" comment="ISRs need fixing">
+      <change afterPath="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/io.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/KernelFiles/kernel/drivers/keyboard.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/COPE.txt" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/COPE.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/Assembly/idt_start.asm" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/Assembly/idt.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/idt.c" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/idt.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/isr_handlers.c" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/kernel32.c" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/CFiles/kernel32.c" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/idt.h" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/idt.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/kernel32.h" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/kernel32.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/KernelFiles/kernel/LinkerScript/linker.ld" beforeDir="false" afterPath="$PROJECT_DIR$/KernelFiles/kernel/LinkerScript/linker.ld" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/boot.asm" beforeDir="false" afterPath="$PROJECT_DIR$/boot.asm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -47,11 +57,10 @@
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/CFiles/handlers.c" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/IDT.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/PIC.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/idt.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/stdlibs.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles/pic.h" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="bSZTC1Bc" />
@@ -96,11 +105,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/KernelFiles/kernel" />
+      <recent name="$PROJECT_DIR$/KernelFiles" />
+      <recent name="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles" />
       <recent name="$PROJECT_DIR$/KernelFiles/kernel/Assembly" />
       <recent name="$PROJECT_DIR$/KernelFiles/kernel/CFiles" />
-      <recent name="$PROJECT_DIR$/KernelFiles/kernel/HeaderFiles" />
-      <recent name="$PROJECT_DIR$/KernelFiles/kernel/l" />
-      <recent name="$PROJECT_DIR$/bin" />
     </key>
   </component>
   <component name="TaskManager">
@@ -204,7 +213,18 @@
       <workItem from="1771216084543" duration="732000" />
       <workItem from="1771218603306" duration="2559000" />
       <workItem from="1771242478914" duration="2810000" />
-      <workItem from="1771250103884" duration="9085000" />
+      <workItem from="1771250103884" duration="9151000" />
+      <workItem from="1771267032100" duration="144000" />
+      <workItem from="1771326656979" duration="6863000" />
+      <workItem from="1771339417376" duration="7360000" />
+      <workItem from="1771356012173" duration="54000" />
+      <workItem from="1771409939446" duration="3135000" />
+      <workItem from="1771416749805" duration="329000" />
+      <workItem from="1771427771139" duration="3543000" />
+      <workItem from="1771504234022" duration="1389000" />
+      <workItem from="1771506054591" duration="64000" />
+      <workItem from="1771584013036" duration="2979000" />
+      <workItem from="1771587071825" duration="115000" />
     </task>
     <task id="LOCAL-00001" summary="Hard stuff">
       <option name="closed" value="true" />
@@ -230,7 +250,15 @@
       <option name="project" value="LOCAL" />
       <updated>1771258386937</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="ISRs need fixing">
+      <option name="closed" value="true" />
+      <created>1771265061114</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1771265061114</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -239,6 +267,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Hard stuff" />
     <MESSAGE value="Finally?" />
-    <option name="LAST_COMMIT_MESSAGE" value="Finally?" />
+    <MESSAGE value="ISRs need fixing" />
+    <option name="LAST_COMMIT_MESSAGE" value="ISRs need fixing" />
   </component>
 </project>
