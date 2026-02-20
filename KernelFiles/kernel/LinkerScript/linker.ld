@@ -8,18 +8,22 @@ SECTIONS
     {
         KEEP(*(.kernel_main))
     }
+
     .text :
     {
     *(.text)
     }
+
     .rodata  :
     {
     *(.rodata)
     }
+
     .data :
     {
      *(.data)
      }
+
     .bss  :
     { *(.bss) *(COMMON)
     }
