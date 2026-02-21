@@ -16,8 +16,8 @@ void set_idt_gate(void *handler, uint8_t vector, uint8_t attributes){
 
 void idt_flush(struct idt_descriptor *idtp){
 	//THE IDT POINTER IS NORMAL
-	asm volatile("lidt %0" : : "m" (idtp));
-	asm volatile("sidt %0" : : "m" (idtp));
+	asm volatile("lidt %0" : : "m" (*idtp));
+	asm volatile("sidt %0" : : "m" (*idtp));
 }
 void pic_init(void){
 	/* currently not used, testing IDT and ISRs before enabling

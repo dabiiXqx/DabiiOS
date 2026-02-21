@@ -7,7 +7,8 @@ __attribute__ ((section (".kernel_main")))
 void kernel_main(){
 	VGA("Kernel", 0xf, 0x1, 0);
 	idt_init();
-	asm volatile("ud2"); //tests if ISRs work with exception vector 6
+	pic_init();
+	asm volatile("sti");
 	while(1){
 		asm volatile("hlt");
 	}
