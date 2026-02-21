@@ -1,7 +1,7 @@
 WARNING, THIS OS IS INCOMPLETE AND IN ALPHA DEVELOPMENT, DO NOT FORK OR TRY ANYTHING UNTIL OS IS HALF COMPLETE OR FULLY COMPLETE
 
 
-DATE: 14/2/2026 TIME: 10:37 AM
+DATE: 14/2/2026 TIME: 10:37 AM [IDT IS CORRECT, ISR'S ARE NOT]
 for some reason this stupid IDT refuses to work, i dont understand what's going on, is it the-
 memory layout or am i setting gates incorrectly? the EIP keeps going to 0x3 for seemingly
 no reason.
@@ -9,7 +9,7 @@ no reason.
 might be because of this? "Section: .bss (0x3)"
 
 
-DATE: 16/2/2026 TIME: 8:40 AM
+DATE: 16/2/2026 TIME: 8:40 AM [SOLVED]
 I noticed that GDTR = 0 when EIP is normal, (not pointing to 0x3)
 But when EIP = 0x3, GDTR is not 0. cool pattern.
 
@@ -22,16 +22,17 @@ I also realized that the zeroed gdt is when cr0 bit 0 was not enabled, which is 
 it's in real mode, this is normal. nothing is wrong with my GDT. this was a reset. but for some reason
 my cpu keeps switching from real mode to protected mode.
 
+
 TIME: 8:11 PM
 
 my idt finally worked, it worked, it actually worked. all i had to do is to change the
 damn address my bootloader jumps to. now i need to fix the isr_common_stub.
 
-18/2/2026 TIME: 7:33 PM
+18/2/2026 TIME: 7:33 PM [UNSOLVED]
 
 (gdb) p/x idtp
 $1 = {limit = 0x7ff, base = 0x9320}
 
 normal idt pointer struct, normal everything.
 
-even stack is normal
+even stack is normal, oh and don't ask why i add dates and times to my issues, anyway, ISRs still dont work
