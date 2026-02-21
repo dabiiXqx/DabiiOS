@@ -1,4 +1,5 @@
 #pragma once
+#include "../HeaderFiles/kernel32.h"
 #include <stdint.h>
 
 struct idt_gate {
@@ -10,12 +11,15 @@ struct idt_gate {
 }__attribute__((packed));
 
 struct idt_descriptor {
-	uint16_t limit;
-	uint32_t base;
+	uint16_t limit; //2 bytes
+	uint32_t base; //6 bytes
 }__attribute__((packed));
 
 void idt_init(void);
 void pic_init(void);
+void pic_disable(void);
+void irq_mask(uint8_t irq);
+void irq_clear(uint8_t irq);
 
 extern void isr0(void);
 extern void isr1(void);
@@ -49,3 +53,30 @@ extern void isr28(void);
 extern void isr29(void);
 extern void isr30(void);
 extern void isr31(void);
+
+//!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!PIC STUFF!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+static uint16_t __pic_get_irq_reg(int ocw3)
+{
+
+    outb(0x20, ocw3);
+    outb(0xA0, ocw3);
+    return (inb(0xA0) << 8) | inb(0x20);
+}
+
+extern void irq0(void);
+extern void irq1(void);
+extern void irq2(void);
+extern void irq3(void);
+extern void irq4(void);
+extern void irq5(void);
+extern void irq6(void);
+extern void irq7(void);
+extern void irq8(void);
+extern void irq9(void);
+extern void irq10(void);
+extern void irq11(void);
+extern void irq12(void);
+extern void irq13(void);
+extern void irq14(void);
+extern void irq15(void);

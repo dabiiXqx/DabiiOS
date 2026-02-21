@@ -17,7 +17,9 @@ CFLAGS = -m32 \
 	-c \
 	-fno-pie
 
-C_SOURCES:=$(wildcard KernelFiles/kernel/CFiles/*.c)
+C_SOURCES := \
+    $(wildcard KernelFiles/kernel/CFiles/*.c) \
+    $(wildcard KernelFiles/kernel/drivers/*.c)
 C_OBJECTS:= $(C_SOURCES:.c=.o)
 
 ASM_SOURCES:= $(wildcard KernelFiles/kernel/Assembly/*.asm)
@@ -44,9 +46,10 @@ boot:
 disk:
 	dd if=/dev/zero of=disk.img bs=1M count=8
 	dd if=bin/boot.bin of=disk.img bs=512 count=1 conv=notrunc
-	dd if=bin/kernel32.bin of=disk.img bs=512 seek=1 count=7 conv=notrunc
+	dd if=bin/kernel32.bin of=disk.img bs=512 seek=1 count=10 conv=notrunc
 clean:
 	rm -f KernelFiles/kernel/Assembly/*.o
 	rm -f KernelFiles/kernel/CFiles/*.o
+	rm -f KernelFiles/kernel/drivers/*.o
 ReadBoot:
 	 x86_64-elf-objdump -D -b binary -m i386 -M intel --adjust-vma=0x7C00 bin/boot.bin

@@ -11,7 +11,7 @@ mov bp, sp
 
 mov bx, KERNELOC
 mov ah, 0x02
-mov al, 6
+mov al, 10
 mov ch, 0
 mov dh, 0
 mov cl, 2
