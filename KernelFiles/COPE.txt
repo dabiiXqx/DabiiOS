@@ -37,7 +37,3 @@ normal idt pointer struct, normal everything.
 
 even stack is normal, oh and don't ask why i add dates and times to my issues, anyway, ISRs still dont work
 
-
-
-
-	-I KernelFiles/kernel/drivers/driverHeader \
