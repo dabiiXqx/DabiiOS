@@ -32,6 +32,10 @@ void putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
         VGA_base[i] = (attr << 8) | ' ';
     }
 
+    if(c == 0x0){
+        return;
+    }
+
     VGA_base[0] = (attr << 8) | c;
 
     if (Halt) {
