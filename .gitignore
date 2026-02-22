@@ -4,4 +4,5 @@
 *.bin
 *.iso
 *.elf
+#macos
 .DS_Store
