@@ -1,7 +1,7 @@
 WARNING, THIS OS IS INCOMPLETE AND IN ALPHA DEVELOPMENT, DO NOT FORK OR TRY ANYTHING UNTIL OS IS HALF COMPLETE OR FULLY COMPLETE
 
 
-DATE: 14/2/2026 TIME: 10:37 AM [IDT IS CORRECT, ISR'S ARE NOT]
+DATE: 14/2/2026 TIME: 10:37 AM [SOLVED]
 for some reason this stupid IDT refuses to work, i dont understand what's going on, is it the-
 memory layout or am i setting gates incorrectly? the EIP keeps going to 0x3 for seemingly
 no reason.
