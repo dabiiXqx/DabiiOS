@@ -20,6 +20,7 @@ void pic_init(void);
 void pic_disable(void);
 void irq_mask(uint8_t irq);
 void irq_clear(uint8_t irq);
+void pic_eoi(uint8_t irq);
 
 extern void isr0(void);
 extern void isr1(void);

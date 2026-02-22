@@ -2,6 +2,7 @@
 #include "../HeaderFiles/handlers.h"
 
 typedef void (*Handlers)(void);
+
 const char* emsg[32] = {
     "Division By Zero", // 0
     "Debug", // 1
@@ -36,10 +37,6 @@ const char* emsg[32] = {
     "Reserved", // 30
     "Reserved", // 31
 };
-
-void dummy(){
-	VGA("dummy", 0xf, 0x7, 1);
-}
 
 void DE_exception(){
 	VGA(emsg[0], 0xf, 0x7, 1);
@@ -169,9 +166,12 @@ void res31_exception(){
 	VGA(emsg[31], 0xf, 0x7, 1);
 }
 //IRQ FUNCTIONS HERE
-
+void irq0_int(){
+	timer();
+}
 void irq1_int(){
 	keyboard_handler();
+	return;
 }
 
 Handlers func_table[34] = {
@@ -207,8 +207,6 @@ Handlers func_table[34] = {
 	res29_exception,
 	res30_exception,
 	res31_exception,
-	dummy,
+	irq0_int,
 	irq1_int
 };
-
-

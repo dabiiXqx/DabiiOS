@@ -25,3 +25,18 @@ void VGA(const char* text, uint8_t fg, uint8_t bg, _Bool Halt) {
     }
 
 }
+void putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
+    volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
+    uint16_t attr = (bg << 4) | fg;
+    for (int i = 0; i < 80*25; i++) {
+        VGA_base[i] = (attr << 8) | ' ';
+    }
+
+    VGA_base[0] = (attr << 8) | c;
+
+    if (Halt) {
+        while (1) {
+            asm volatile("hlt");
+        }
+    }
+}
