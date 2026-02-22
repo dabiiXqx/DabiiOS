@@ -4,3 +4,4 @@
 *.bin
 *.iso
 *.elf
+.DS_Store
