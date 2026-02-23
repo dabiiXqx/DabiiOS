@@ -4,6 +4,7 @@ CC=x86_64-elf-gcc
 LD=x86_64-elf-ld
 NASM=nasm
 OBJCOPY=x86_64-elf-objcopy
+KERNEL_LOAD_SECTORS=20
 CFLAGS = -m32 \
 	-mno-sse \
 	-mno-sse2 \
@@ -46,7 +47,13 @@ boot:
 disk:
 	dd if=/dev/zero of=disk.img bs=1M count=8
 	dd if=bin/boot.bin of=disk.img bs=512 count=1 conv=notrunc
-	dd if=bin/kernel32.bin of=disk.img bs=512 seek=1 count=10 conv=notrunc
+	@kernel_bytes=$$(wc -c < bin/kernel32.bin); \
+	kernel_sectors=$$(( (kernel_bytes + 511) / 512 )); \
+	if [ $$kernel_sectors -gt $(KERNEL_LOAD_SECTORS) ]; then \
+		echo "Error: kernel32.bin uses $$kernel_sectors sectors, but bootloader only loads $(KERNEL_LOAD_SECTORS)."; \
+		exit 1; \
+	fi
+	dd if=bin/kernel32.bin of=disk.img bs=512 seek=1 conv=notrunc
 clean:
 	rm -f KernelFiles/kernel/Assembly/*.o
 	rm -f KernelFiles/kernel/CFiles/*.o

@@ -61,7 +61,7 @@ void keyboard_handler(void) {
 
 //right now this function is long and i know it, i'll try to shorten it later.
 char scan(int scancode){
-    char c;
+    char c = 0;
 
     switch(scancode){
         
@@ -141,6 +141,7 @@ char scan(int scancode){
             c = 0x5D;
             break;
         case KEY_ENTR_PRES:
+            c = 0x0;
             break;
 
         default:

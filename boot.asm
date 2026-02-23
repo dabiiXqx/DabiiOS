@@ -1,6 +1,7 @@
 [bits 16]
 org 0x7c00
 KERNELOC equ 0x9000
+KERNEL_LOAD_SECTORS equ 20
 
 xor ax, ax
 mov es, ax
@@ -11,7 +12,7 @@ mov bp, sp
 
 mov bx, KERNELOC
 mov ah, 0x02
-mov al, 20
+mov al, KERNEL_LOAD_SECTORS
 mov ch, 0
 mov dh, 0
 mov cl, 2
