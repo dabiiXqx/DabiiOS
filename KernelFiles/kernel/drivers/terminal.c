@@ -1,14 +1,19 @@
 #include "../HeaderFiles/kernel32.h"
 #include <stdint.h>
 
+
 //trust me, i know the code is horrible. like i actually know it. i just don't know any "good" ways to code ig
+#define VGA_WIDTH 80
+#define VGA_HEIGHT 25
+#define VGA_FULL VGA_HEIGHT * VGA_WIDTH
+
+volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
 
 void scroll(volatile uint16_t* vga);
-
 void clear_screen(volatile uint16_t* vga, uint16_t attr);
+static inline get_index();
 
 void VGA(const char* text, uint8_t fg, uint8_t bg, _Bool clear, _Bool Halt) {
-    volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
     uint16_t attr = (bg << 4) | fg;
     if(clear){
         clear_screen(VGA_base, attr);
@@ -26,29 +31,25 @@ void VGA(const char* text, uint8_t fg, uint8_t bg, _Bool clear, _Bool Halt) {
 
 static int cursor[2] = {0, 8}; //[0] is row [1] is column
 
-
 void console_putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
-    volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
-    int index = cursor[0] * 80 + cursor[1];
+    int index = get_index();
     uint16_t attr = (bg << 4) | fg;
     if(c == 0){
         return;
     }
     VGA_base[index] = (attr << 8) | c;
-
     cursor[1]++;
     if(cursor[1] >= 80){
         cursor[1] = 0;
         cursor[0]++;
         if(cursor[0] >= 25){
             scroll(VGA_base);
-            for(int i = 24*80; i < 25*80; i++){
+            for(int i = (VGA_HEIGHT - 1) * VGA_WIDTH; i < VGA_FULL; i++){
                 VGA_base[i] = (attr << 8) | 0x0;
             }
             cursor[0] = 24;
         }
     }
-
     if (Halt) {
         while (1) {
             asm volatile("hlt");
@@ -56,9 +57,8 @@ void console_putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
     }
 }
 void console_backc(uint8_t fg, uint8_t bg){
-    volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
     uint16_t attr = (bg << 4) | fg;
-    int index = cursor[0] * 80 + cursor[1];
+    int index = get_index();
     cursor[1]--;
     if(cursor[1] < 8){
         cursor[1] = 8;
@@ -74,29 +74,31 @@ void console_backc(uint8_t fg, uint8_t bg){
 }
 
 void newline(uint8_t fg, uint8_t bg){
-    volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
     uint16_t attr = (bg << 4) | fg;
-    int index = cursor[0] * 80 + cursor[1];
+    int index = get_index();
     cursor[0]++;
     cursor[1] = 0;
     if(cursor[0] >= 25){
-            scroll(VGA_base);
-            for(int i = 24*80; i < 25*80; i++){
-                VGA_base[i] = (attr << 8) | 0x0;
-            }
-            cursor[0] = 24;
+        scroll(VGA_base);
+        for(int i = (VGA_HEIGHT - 1) * VGA_WIDTH; i < VGA_FULL; i++){
+            VGA_base[i] = (attr << 8) | 0x0;
         }
+        cursor[0] = 24;
+    }
     return;
 }
 
 void scroll(volatile uint16_t* vga){
-    for(int i = 0; i < 24*80; i++){
+    for(int i = 0; i < (VGA_HEIGHT - 1) * VGA_WIDTH; i++){
         vga[i] = vga[i + 80];
     }
 }
 
 void clear_screen(volatile uint16_t* vga, uint16_t attr){
-    for (int i = 0; i < 80*25; i++) {
+    for (int i = 0; i < VGA_FULL; i++) {
         vga[i] = (attr << 8) | ' ';
     }
+}
+static inline int get_index() {
+    return cursor[0] * VGA_WIDTH + cursor[1];
 }

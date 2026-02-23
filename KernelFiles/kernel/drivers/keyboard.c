@@ -4,8 +4,6 @@ char scan(int scancode);
 
 //CURRENTLY THE DRIVER IS INCOMPLETE
 
-//TODO: ADD NEWLINES cursor_pos = (cursor_pos / 80) * 80 + 80
-
 typedef enum {
 
     KEY_ESC_PRES = 0x01,
@@ -77,6 +75,10 @@ char scan(int scancode){
 
     switch(scancode){
         case KEY_ESC_PRES:
+            VGA("Shutting down..", 0xf, 0x7, 1, 0);
+            while(inb(0x64) & 0x02){
+                io_wait();
+            }
             outb(0x64, 0xFE);
             break;
         case KEY_BACKSPACE_PRES:
