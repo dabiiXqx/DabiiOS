@@ -61,22 +61,12 @@ void keyboard_handler(void) {
 
 char keys[104] = {
     0, 0, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 0, 0,
-    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'
+    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 0
 };
 
 
 char scan(int scancode){
     char c = 0;
-    char* p = keys;
-    char* end = keys + 104;
-
-    while(*p != 'p' && p < end){
-        p++;
-    }
-
-    ptrdiff_t offset = p - keys;
-    kmemset(keys + offset + 1, 0, sizeof(keys) - (offset - 1));
-
 
     if (scancode >= sizeof(keys)){
         return 0;
@@ -90,7 +80,10 @@ char scan(int scancode){
             outb(0x64, 0xFE);
             break;
         case KEY_BACKSPACE_PRES:
-                console_backc(0xf, 0x1);
+            console_backc(0xf, 0x1);
+            break;
+        case KEY_ENTR_PRES:
+            newline(0xf, 0x1);
             break;
     }
 

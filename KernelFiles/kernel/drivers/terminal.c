@@ -1,6 +1,8 @@
 #include "../HeaderFiles/kernel32.h"
 #include <stdint.h>
 
+//trust me, i know the code is horrible. like i actually know it. i just don't know any "good" ways to code ig
+
 void scroll(volatile uint16_t* vga);
 
 void clear_screen(volatile uint16_t* vga, uint16_t attr);
@@ -29,13 +31,10 @@ void console_putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
     volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
     int index = cursor[0] * 80 + cursor[1];
     uint16_t attr = (bg << 4) | fg;
-
     if(c == 0){
         return;
     }
-
     VGA_base[index] = (attr << 8) | c;
-
 
     cursor[1]++;
     if(cursor[1] >= 80){
@@ -46,6 +45,7 @@ void console_putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
             for(int i = 24*80; i < 25*80; i++){
                 VGA_base[i] = (attr << 8) | 0x0;
             }
+            cursor[0] = 24;
         }
     }
 
@@ -59,8 +59,9 @@ void console_backc(uint8_t fg, uint8_t bg){
     volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
     uint16_t attr = (bg << 4) | fg;
     int index = cursor[0] * 80 + cursor[1];
-    if(cursor[1] <= 0){
-        cursor[1] = 0;
+    cursor[1]--;
+    if(cursor[1] < 8){
+        cursor[1] = 8;
         if (cursor[0] < 0){
             cursor[0] = 0;
         }
@@ -68,8 +69,23 @@ void console_backc(uint8_t fg, uint8_t bg){
     else{
         index--;
         VGA_base[index] = (attr << 8) | ' ';
-        cursor[1]--;
     }
+    return;
+}
+
+void newline(uint8_t fg, uint8_t bg){
+    volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
+    uint16_t attr = (bg << 4) | fg;
+    int index = cursor[0] * 80 + cursor[1];
+    cursor[0]++;
+    cursor[1] = 0;
+    if(cursor[0] >= 25){
+            scroll(VGA_base);
+            for(int i = 24*80; i < 25*80; i++){
+                VGA_base[i] = (attr << 8) | 0x0;
+            }
+            cursor[0] = 24;
+        }
     return;
 }
 
