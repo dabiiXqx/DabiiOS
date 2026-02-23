@@ -25,18 +25,34 @@ void VGA(const char* text, uint8_t fg, uint8_t bg, _Bool Halt) {
     }
 
 }
+
+int cursor[2] = {0, 8}; //[0] is row [1] is column
+
 void putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
     volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
+    
+
+    int index = cursor[0] * 80 + cursor[1];
     uint16_t attr = (bg << 4) | fg;
     for (int i = 0; i < 80*25; i++) {
         VGA_base[i] = (attr << 8) | ' ';
     }
 
-    if(c == 0x0){
+    if(c == 0){
         return;
     }
 
-    VGA_base[0] = (attr << 8) | c;
+    VGA_base[index] = (attr << 8) | c;
+
+    cursor[1]++;
+    if(cursor[1] >= 80){
+        cursor[1] = 0;
+        cursor[0]++;
+        if(cursor[0] >= 25){
+            cursor[0] = 0;
+            cursor[1] = 0;
+        }
+    }
 
     if (Halt) {
         while (1) {

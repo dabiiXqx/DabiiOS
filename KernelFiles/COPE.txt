@@ -37,3 +37,6 @@ normal idt pointer struct, normal everything.
 
 even stack is normal, oh and don't ask why i add dates and times to my issues, anyway, ISRs still dont work
 
+22/2/2026 TIME: 7:40 PM
+
+Today the timer and keyboard driver has been implemented, the keyboard driver is actually unfinished, so yea.
