@@ -1,9 +1,10 @@
 #include "../HeaderFiles/kernel32.h"
+#include <stddef.h>
 char scan(int scancode);
 
 //CURRENTLY THE DRIVER IS INCOMPLETE
 
-//TODO: ADD NEWLINES cursor_pos = (cursor_pos / VGA_WIDTH) * VGA_WIDTH + VGA_WIDTH
+//TODO: ADD NEWLINES cursor_pos = (cursor_pos / 80) * 80 + 80
 
 typedef enum {
 
@@ -54,99 +55,46 @@ typedef enum {
 void keyboard_handler(void) {
     int scancode = inb(0x60);
     char c = scan(scancode);
-    putc(c, 0xf, 0x1, 0);
-    pic_eoi(1);
+    console_putc(c, 0xf, 0x1, 0);
     return;
 }
 
-//right now this function is long and i know it, i'll try to shorten it later.
+char keys[104] = {
+    0, 0, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 0, 0,
+    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']'
+};
+
+
 char scan(int scancode){
     char c = 0;
+    char* p = keys;
+    char* end = keys + 104;
+
+    while(*p != 'p' && p < end){
+        p++;
+    }
+
+    ptrdiff_t offset = p - keys;
+    kmemset(keys + offset + 1, 0, sizeof(keys) - (offset - 1));
+
+
+    if (scancode >= sizeof(keys)){
+        return 0;
+    }
+    else if (scancode <= 0){
+        return 0;
+    }
 
     switch(scancode){
-        
         case KEY_ESC_PRES:
             outb(0x64, 0xFE);
             break;
-        case KEY_0_PRES:
-            c = 0x30;
+        case KEY_BACKSPACE_PRES:
+                console_backc(0xf, 0x1);
             break;
-        case KEY_1_PRES:
-            c = 0x31;
-            break;
-        case KEY_2_PRES:
-            c = 0x32;
-            break;
-        case KEY_3_PRES:
-            c = 0x33;
-            break;
-        case KEY_4_PRES:
-            c = 0x34;
-            break;
-        case KEY_5_PRES:
-            c = 0x35;
-            break;
-        case KEY_6_PRES:
-            c = 0x36;
-            break;
-        case KEY_7_PRES:
-            c = 0x37;
-            break;
-        case KEY_8_PRES:
-            c = 0x38;
-            break;
-        case KEY_9_PRES:
-            c = 0x39;
-            break;
-        case KEY_DASH_PRES:
-            c = 0x2D;
-            break;
-        case KEY_EQUALS_PRES:
-            c = 0x3D;
-            break;
-        case KEY_Q_PRES:
-            c = 0x71;
-            break;
-        case KEY_W_PRES:
-            c = 0x77;
-            break;
-        case KEY_E_PRES:
-            c = 0x65;
-            break;
-        case KEY_R_PRES:
-            c = 0x72;
-            break;
-        case KEY_T_PRES:
-            c = 0x74;
-            break;
-        case KEY_Y_PRES:
-            c = 0x79;
-            break;
-        case KEY_U_PRES:
-            c = 0x75;
-            break;
-        case KEY_I_PRES:
-            c = 0x69;
-            break;
-        case KEY_O_PRES:
-            c = 0x6F;
-            break;
-        case KEY_P_PRES:
-            c = 0x70;
-            break;
-        case KEY_OPNBRACK_PRES:
-            c = 0x5B;
-            break;
-        case KEY_CLSDBRACK_PRES:
-            c = 0x5D;
-            break;
-        case KEY_ENTR_PRES:
-            c = 0x0;
-            break;
-
-        default:
-            c = 0x0;
     }
+
+    c = keys[scancode];
 
     return c;
 }

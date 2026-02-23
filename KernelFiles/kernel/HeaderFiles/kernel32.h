@@ -2,8 +2,9 @@
 
 #include "../HeaderFiles/io.h"
 #include "../HeaderFiles/idt.h"
-#include "../HeaderFiles/util.h"
+#include "../drivers/driverHeader/terminal.h"
 #include "../drivers/driverHeader/timer.h"
+#include "../HeaderFiles/stdlibs.h"
 
 
 

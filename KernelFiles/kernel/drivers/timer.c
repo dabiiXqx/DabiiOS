@@ -7,7 +7,6 @@ volatile uint64_t ticks;
 
 void timer(void){
     ticks += 1;
-    pic_eoi(0);
 }
 void pit_init(void){
     ticks = 0;
