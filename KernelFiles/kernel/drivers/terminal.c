@@ -3,15 +3,16 @@
 
 
 //trust me, i know the code is horrible. like i actually know it. i just don't know any "good" ways to code ig
+
 #define VGA_WIDTH 80
 #define VGA_HEIGHT 25
 #define VGA_FULL VGA_HEIGHT * VGA_WIDTH
+static inline int get_index();
 
 volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
 
 void scroll(volatile uint16_t* vga);
 void clear_screen(volatile uint16_t* vga, uint16_t attr);
-static inline get_index();
 
 void VGA(const char* text, uint8_t fg, uint8_t bg, _Bool clear, _Bool Halt) {
     uint16_t attr = (bg << 4) | fg;
@@ -60,7 +61,7 @@ void console_backc(uint8_t fg, uint8_t bg){
     uint16_t attr = (bg << 4) | fg;
     int index = get_index();
     cursor[1]--;
-    if(cursor[1] < 8){
+    if(cursor[1] < 8 && cursor[0] == 0){
         cursor[1] = 8;
         if (cursor[0] < 0){
             cursor[0] = 0;

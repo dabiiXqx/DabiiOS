@@ -2,8 +2,11 @@
 #include <stddef.h>
 char scan(int scancode);
 
-//CURRENTLY THE DRIVER IS INCOMPLETE
+//THE DRIVER IS ALMOST COMPLETE, NEEDS A FEW MORE FEATURES.
 
+//TODO: ADD KEY COMBOS
+
+//This enum maps raw scancodes to readable labels
 typedef enum {
 
     KEY_ESC_PRES = 0x01,
@@ -46,22 +49,47 @@ typedef enum {
     KEY_L_PRES = 0x26,
     KEY_SEMICOLON_PRES = 0x27,
     KEY_SINGLEQUOTE_PRES = 0x28,
-    KEY_BACKTICK_PRES = 0x29
+    KEY_BACKTICK_PRES = 0x29,
+    KEY_LFTSHIFT_PRES = 0x2A,
+    KEY_BACKSLASH_PRES = 0x2B,
+    KEY_Z_PRES = 0x2C,
+    KEY_X_PRES = 0x2D,
+    KEY_C_PRES = 0x2E,
+    KEY_V_PRES = 0x2F,
+    KEY_B_PRES = 0x30,
+    KEY_N_PRES = 0x31,
+    KEY_M_PRES = 0x32,
+    KEY_COMMA_PRES = 0x33,
+    KEY_PERIOD_PRES = 0x34,
+    KEY_SLASH_PRES = 0x35,
+    KEY_RGHTSHIFT_PRES = 0x36,
+    KEY_KEYPAD_ASTERISK_PRES = 0x37,
+    KEY_LEFTALT_PRES = 0x38,
+    KEY_SPACE_PRES = 0x39,
+    KEY_CAPSLOCK_PRES = 0x3A,
 
 } key_map;
 
 void keyboard_handler(void) {
     int scancode = inb(0x60);
     char c = scan(scancode);
-    console_putc(c, 0xf, 0x1, 0);
+    console_putc(c, 0xf, 0x1, 0); //this API is defined in KernelFiles/kernel/drivers/terminal.c
     return;
 }
 
-char keys[104] = {
+/*This array contains all the currently supported keys of the driver. 
+  It's designed in a way that it can be indexed easily using the scancode.*/
+char keys[58] = {
     0, 0, '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '-', '=', 0, 0,
-    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 0
+    'q', 'w', 'e', 'r', 't', 'y', 'u', 'i', 'o', 'p', '[', ']', 0, 0, 'a', 's',
+    'd', 'f', 'g', 'h', 'j', 'k', 'l', ';', '\'', '`', 0, '\\', 'z', 'x', 'c', 'v',
+    'b', 'n', 'm', ',', '.', '/', 0, '*', 0, ' '
 };
 
+//This variable is supposed to hold the numerical representation of a physical key. unused currently.
+uint16_t key_id;
+
+uint64_t key_down[2] = {0, 0};
 
 char scan(int scancode){
     char c = 0;
@@ -79,13 +107,14 @@ char scan(int scancode){
             while(inb(0x64) & 0x02){
                 io_wait();
             }
+            //This does a cpu reset
             outb(0x64, 0xFE);
             break;
         case KEY_BACKSPACE_PRES:
-            console_backc(0xf, 0x1);
+            console_backc(0xf, 0x1); //in terminal.c
             break;
         case KEY_ENTR_PRES:
-            newline(0xf, 0x1);
+            newline(0xf, 0x1); //in terminal.c
             break;
     }
 
