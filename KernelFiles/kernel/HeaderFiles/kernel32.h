@@ -5,6 +5,7 @@
 #include "../drivers/driverHeader/terminal.h"
 #include "../drivers/driverHeader/timer.h"
 #include "../HeaderFiles/stdlibs.h"
+#include "../drivers/driverHeader/keyboard.h"
 
 
 
