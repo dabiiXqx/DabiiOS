@@ -27,4 +27,6 @@ SECTIONS
     .bss  :
     { *(.bss) *(COMMON)
     }
+
+    end_of_krnl_img = .;
 }
