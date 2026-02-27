@@ -16,15 +16,24 @@ void heap_init(){
 }
 void *kalloc(size_t bytes){
     //This allocator is genuinely running on hopes and dreams 😭
-    struct HeapChunk *heapchunk = (struct HeapChunk*)heap_top;
-    heapchunk->header = bytes | ALLOCATED;
-    heapchunk->footer = heapchunk->header;
-    void* ptr = &heapchunk->payload;
-    heap_top += sizeof(struct HeapChunk) + bytes;
+    if(bytes == 0){
+        return NULL;
+    }
 
-    return ptr;
+    struct AllocHeapChunk *heapchunk = (struct AllocHeapChunk*)heap_top;
+    bytes = (bytes + 3) & ~3;
+
+    heapchunk->header = bytes | ALLOCATED;
+    void* payload = heapchunk->payload;
+
+    uint32_t* footer = (uint32_t*)((char*)payload + bytes);
+    *footer = heapchunk->header;
+
+    heap_top = ((char*)heap_top + sizeof(struct AllocHeapChunk) + bytes + sizeof(uint32_t));
+
+    return payload;
 }
 void *kfree(void* ptr){
-    //still didn't make it because the allocator itself is running on hopes and dreams.
+    
 
 }

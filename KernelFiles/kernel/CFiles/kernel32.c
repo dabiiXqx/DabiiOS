@@ -12,11 +12,7 @@ void kernel_main(){
 	irq_clear(1);
 	asm volatile("sti");
 	heap_init();
-	void* pointer = kalloc(5);
-	char* ptr = (char*)pointer;
-	for(int i = 0; i < 5; i++){
-		ptr[i] = '3';
-	}
+	void* pointer = kalloc(34);
 	while(1){
 		asm volatile("hlt");
 	}
