@@ -39,4 +39,10 @@ even stack is normal, oh and don't ask why i add dates and times to my issues, a
 
 22/2/2026 TIME: 7:40 PM
 
-Today the timer and keyboard driver has been implemented, the keyboard driver is actually unfinished, so yea.
+Today the timer and keyboard driver has been implemented, the keyboard driver is actually unfinished, so yea
+
+
+28/2/2026 TIME: 12:46 PM
+
+it's about time i got a well deserved break, i've been at it alot and i'm going to focus on other things now like personal
+projects. cya everyone
