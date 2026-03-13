@@ -38,7 +38,7 @@ void idt_init(void){
 	idtp.limit = sizeof(idt) - 1;
 	idtp.base = (uint32_t)&idt;
 	for(int i = 0; i < 32; i++){
-		set_idt_gate(isr_functions[i], i, 0x8F);
+		set_idt_gate(isr_functions[i], i, 0x8E);
 	}
 	set_idt_gate(irq0, 32, 0x8E);
 	set_idt_gate(irq1, 33, 0x8E);

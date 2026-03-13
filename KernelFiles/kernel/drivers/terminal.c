@@ -3,47 +3,21 @@
 
 
 //trust me, i know the code is horrible. like i actually know it. i just don't know any "good" ways to code ig
-
+//i've been reading The c programming language, and im actually learning
+//i'll be coding better soon :)
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!VGA STUFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
-static  int cursor[2] = {0, 8}; //[0] is row [1] is column
 
-#define VGA_WIDTH 80
-#define VGA_HEIGHT 25
-#define VGA_FULL VGA_HEIGHT * VGA_WIDTH
+int cursor[2] = {0, 0}; //[0] is row [1] is column
+volatile uint16_t* VGA_base = (volatile uint16_t*)0xb8000;
 
 _Bool prompt_valid = 1;
 
-static inline int get_index();
-static void scroll(volatile uint16_t* vga);
-void clear_screen(volatile uint16_t* vga, uint16_t attr);
+static void scroll();
+void clear_screen(uint16_t attr);
 void do_cursor(int index);
 
-void VGA(const char* text, uint8_t fg, uint8_t bg, _Bool clear, _Bool Halt, _Bool use_index) {
-    uint16_t attr = (bg << 4) | fg;
-    if(clear){
-        clear_screen(VGA_base, attr);
-    }
-    if(use_index){
-        int index = get_index();
-        for (int i = 0; text[i] != 0; i++) {
-            VGA_base[index+i] = (attr << 8) | text[i];
-        }
-        do_cursor(index + 1);
-        return;
-    }
-    for (int i = 0; text[i] != 0; i++) {
-        VGA_base[i] = (attr << 8) | text[i];
-    }
-    if (Halt) {
-        while (1) {
-            asm volatile("hlt");
-        }
-    }
-}
-
-void console_putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
+void console_putc(char c, uint8_t fg, uint8_t bg){
     int index = get_index();
     uint16_t attr = (bg << 4) | fg;
     if(c == 0){
@@ -53,25 +27,28 @@ void console_putc(char c, uint8_t fg, uint8_t bg, _Bool Halt){
     cursor[1]++;
     if(cursor[1] >= 80){
         cursor[1] = 0;
-        prompt_valid = 0;
         cursor[0]++;
+        prompt_valid = 0;
         if(cursor[0] >= 25){
-            scroll(VGA_base);
+            scroll();
             for(int i = (VGA_HEIGHT - 1) * VGA_WIDTH; i < VGA_FULL; i++){
                 VGA_base[i] = (attr << 8) | ' ';
             }
-            //prompt_valid = 1;
+            prompt_valid = 0;
             cursor[0] = 24;
-            //VGA("Kernel> ", fg, bg, 0, 0, 1);
-        }
-    }
-    if (Halt) {
-        while (1) {
-            asm volatile("hlt");
         }
     }
     do_cursor(index + 1);
 }
+/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+void VGA(const char* text, uint8_t fg, uint8_t bg) {
+    int i;
+    i = 0;
+    while(text[i] != '\0'){
+        console_putc(text[i++], fg, bg);
+    }
+}
+
 void console_backc(uint8_t fg, uint8_t bg){
     uint16_t attr = (bg << 4) | fg;
     int index = get_index();
@@ -102,13 +79,13 @@ void newline(uint8_t fg, uint8_t bg){
     cursor[0]++;
     cursor[1] = 0;
     if(cursor[0] >= 25){
-        scroll(VGA_base);
+        scroll();
         for(int i = (VGA_HEIGHT - 1) * VGA_WIDTH; i < VGA_FULL; i++){
             VGA_base[i] = (attr << 8) | ' ';
         }
         cursor[0] = 24;
     }
-    VGA("Kernel> ", fg, bg, 0, 0, 1);
+    VGA("Kernel> ", fg, bg);
     cursor[1] = 8;
 
     index = get_index();
@@ -116,15 +93,15 @@ void newline(uint8_t fg, uint8_t bg){
     return;
 }
 
-static void scroll(volatile uint16_t* vga){
+static void scroll(){
     for(int i = 0; i < (VGA_HEIGHT - 1) * VGA_WIDTH; i++){
-        vga[i] = vga[i + 80];
+        VGA_base[i] = VGA_base[i + 80];
     }
 }
 
-void clear_screen(volatile uint16_t* vga, uint16_t attr){
+void clear_screen(uint16_t attr){
     for (int i = 0; i < VGA_FULL; i++) {
-        vga[i] = (attr << 8) | ' ';
+        VGA_base[i] = (attr << 8) | ' ';
     }
 }
 
@@ -134,8 +111,4 @@ void do_cursor(int index){
 
     outb(0x3D4, 0x0E); //Selects same register, but we want the cursor high byte now.
     outb(0x3D5, (index >> 8) & 0xFF);
-}
-
-static inline int get_index() {
-    return cursor[0] * VGA_WIDTH + cursor[1];
 }

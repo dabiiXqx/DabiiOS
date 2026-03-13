@@ -1,12 +1,11 @@
 VERSION=4.0.3
 
-CC=x86_64-elf-gcc
-LD=x86_64-elf-ld
+CC=i686-elf-gcc
+LD=i686-elf-ld
 NASM=nasm
-OBJCOPY=x86_64-elf-objcopy
+OBJCOPY=i686-elf-objcopy
 KERNEL_LOAD_SECTORS=20
-CFLAGS = -m32 \
-	-mno-sse \
+CFLAGS = -mno-sse \
 	-mno-sse2 \
 	-mno-mmx \
 	-msoft-float \
@@ -59,4 +58,4 @@ clean:
 	rm -f KernelFiles/kernel/CFiles/*.o
 	rm -f KernelFiles/kernel/drivers/*.o
 ReadBoot:
-	 x86_64-elf-objdump -D -b binary -m i386 -M intel --adjust-vma=0x7C00 bin/boot.bin
+	 i686-elf-objdump -D -b binary -m i386 -M intel --adjust-vma=0x7C00 bin/boot.bin

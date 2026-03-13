@@ -39,131 +39,227 @@ const char* emsg[32] = {
 };
 
 void DE_exception(){
-	VGA(emsg[0], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[0], 0xf, 0x7);
+	halt();
 }
 
 void DB_exception(){
-	VGA(emsg[1], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[1], 0xf, 0x7);
+	halt();
 }
 
 void NMI_exception(){
-	VGA(emsg[2], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[2], 0xf, 0x7);
+	halt();
 }
 
 void BP_exception(){
-	VGA(emsg[3], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[3], 0xf, 0x7);
+	halt();
 }
 
 void OF_exception(){
-	VGA(emsg[4], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[4], 0xf, 0x7);
+	halt();
 }
 
 void BR_exception(){
-	VGA(emsg[5], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[5], 0xf, 0x7);
+	halt();
 }
 
 void UD_exception(){
-	VGA(emsg[6], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[6], 0xf, 0x7);
+	halt();
+
 }
 
 void NM_exception(){
-	VGA(emsg[7], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[7], 0xf, 0x7);
+	halt();
+
 }
 
 void DF_exception(){
-	VGA(emsg[8], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[8], 0xf, 0x7);
+	halt();
 }
 
 void CSO_exception(){
-	VGA(emsg[9], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[9], 0xf, 0x7);
+	halt();
 }
 
 void TS_exception(){
-	VGA(emsg[10], 0xf, 0x7, 1, 1, 0);
+	VGA(emsg[10], 0xf, 0x7);
+	halt();
 }
 
 void NP_exception(){
-	VGA(emsg[11], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[11], 0xf, 0x7);
+	halt();
 }
 
 void SS_exception(){
-	VGA(emsg[12], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[12], 0xf, 0x7);
+	halt();
 }
 
 void GP_exception(){
-	VGA(emsg[13], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[13], 0xf, 0x7);
+	halt();
 }
 
 void PF_exception(){
-	VGA(emsg[14], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[14], 0xf, 0x7);
+	halt();
 }
 
 void res15_exception(){
-	VGA(emsg[15], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[15], 0xf, 0x7);
+	halt();
 }
 
 void MF_exception(){
-	VGA(emsg[16], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[16], 0xf, 0x7);
+	halt();
 }
 
 void AC_exception(){
-	VGA(emsg[17], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[17], 0xf, 0x7);
+	halt();
 }
 
 void MC_exception(){
-	VGA(emsg[18], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[18], 0xf, 0x7);
+	halt();
 }
 
 void XM_exception(){
-	VGA(emsg[19], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[19], 0xf, 0x7);
+	halt();
 }
 
 void VE_exception(){
-	VGA(emsg[20], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[20], 0xf, 0x7);
+	halt();
 }
 
 void CP_exception(){ //CP doesn't mean CSAM material here, it's an exception mnemonic.
-	VGA(emsg[21], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[21], 0xf, 0x7);
+	halt();
 }
 
 void res22_exception(){
-	VGA(emsg[22], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[22], 0xf, 0x7);
+	halt();
 }
 
 void res23_exception(){
-	VGA(emsg[23], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[23], 0xf, 0x7);
+	halt();
 }
 
 void res24_exception(){
-	VGA(emsg[24], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[24], 0xf, 0x7);
+	halt();
 }
 
 void res25_exception(){
-	VGA(emsg[25], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[25], 0xf, 0x7);
+	halt();
 }
 
 void res26_exception(){
-	VGA(emsg[26], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[26], 0xf, 0x7);
+	halt();
 }
 
 void res27_exception(){
-	VGA(emsg[27], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[27], 0xf, 0x7);
+	halt();
 }
 
 void res28_exception(){
-	VGA(emsg[28], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[28], 0xf, 0x7);
+	halt();
 }
 
 void res29_exception(){
-	VGA(emsg[29], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[29], 0xf, 0x7);
+	halt();
 }
 
 void res30_exception(){
-	VGA(emsg[30], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[30], 0xf, 0x7);
+	halt();
 }
 
 void res31_exception(){
-	VGA(emsg[31], 0xf, 0x7, 1, 1, 0);
+	clear_screen(0x7f);
+	set_index(0, 0);
+	VGA(emsg[31], 0xf, 0x7);
+	halt();
 }
 //IRQ FUNCTIONS HERE
 void irq0_int(){
