@@ -1,10 +1,12 @@
 #include "../HeaderFiles/kernel32.h"
 #include <stdint.h>
+#include <stdarg.h>
 
 
 //trust me, i know the code is horrible. like i actually know it. i just don't know any "good" ways to code ig
 //i've been reading The c programming language, and im actually learning
 //i'll be coding better soon :)
+
 
 //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!VGA STUFF!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -40,7 +42,11 @@ void console_putc(char c, uint8_t fg, uint8_t bg){
     }
     do_cursor(index + 1);
 }
-/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!*/
+
+
+/*_______________________________________________________________________________________________*/
+
+
 void VGA(const char* text, uint8_t fg, uint8_t bg) {
     int i;
     i = 0;
@@ -85,13 +91,17 @@ void newline(uint8_t fg, uint8_t bg){
         }
         cursor[0] = 24;
     }
-    VGA("Kernel> ", fg, bg);
+    kprintf("Kernel> ");
     cursor[1] = 8;
 
     index = get_index();
     do_cursor(index);
     return;
 }
+
+
+/*_______________________________________________________________________________________________*/
+
 
 static void scroll(){
     for(int i = 0; i < (VGA_HEIGHT - 1) * VGA_WIDTH; i++){
@@ -111,4 +121,53 @@ void do_cursor(int index){
 
     outb(0x3D4, 0x0E); //Selects same register, but we want the cursor high byte now.
     outb(0x3D5, (index >> 8) & 0xFF);
+}
+
+/*_______________________________________________________________________________________________*/
+
+/* kprintf can be used for formatted output and uses the default color scheme (0x1f) */
+/*Unlike VGA, where you can choose a custom color scheme, but can't format output.*/
+
+int kprintf(char *fmt, ...){
+    va_list ap;
+
+    char *p, *sval, temp[32];
+    char c;
+    int ival;
+    unsigned int uival;
+
+    va_start(ap, fmt);
+    for(p = fmt; *p; p++){
+        if(*p != '%'){
+            console_putc(*p, 0xf, 0x1);
+            continue;
+        }
+        switch(*++p){
+            case 'd':
+                ival = va_arg(ap, int);
+                itoa(ival, temp);
+                VGA(temp, 0xf, 0x1);
+                kmemset(temp, 0, sizeof temp);
+                break;
+            case 's':
+                sval = va_arg(ap, char*);
+                VGA(sval, 0xf, 0x1);
+                break;
+            case 'x':
+                uival = va_arg(ap, unsigned int);
+                itox(uival, temp);
+                VGA(temp, 0xf, 0x1);
+                kmemset(temp, 0, sizeof temp);
+                break;
+            case 'c':
+                c = (char)va_arg(ap, int);
+                console_putc(c, 0xf, 0x1);
+                break;
+            default:
+                VGA("Invalid format specifier", 0xf, 0x1);
+        }
+    }
+
+    va_end(ap);
+    return 0;
 }

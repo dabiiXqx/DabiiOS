@@ -20,3 +20,5 @@ void console_backc(uint8_t fg, uint8_t bg);
 void newline(uint8_t fg, uint8_t bg);
 void do_cursor(int index);
 void clear_screen(uint16_t attribute);
+
+int kprintf(char *format, ...);

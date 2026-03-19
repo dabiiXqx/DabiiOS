@@ -44,3 +44,20 @@ void itoa(int n, char s[]){
     s[i] = '\0';
     reverse(s);
 }
+void itox(unsigned int n, char s[]){
+    int r, i = 0;
+
+    while(n != 0){
+        r = n % 16;
+
+        if(r < 10)
+            s[i] = r + '0';
+        else
+            s[i] = r + 'A' - 10;
+
+        i++;
+        n = n / 16;
+    }
+
+    reverse(s);
+}

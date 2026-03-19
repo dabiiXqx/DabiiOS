@@ -4,8 +4,9 @@
 #include "../HeaderFiles/kernel32.h"
 __attribute__ ((section (".kernel_main")))
 void kernel_main(){
+	char *s = "Hello";
 	clear_screen(0x1f);
-	VGA("Kernel> ", 0xf, 0x1);
+	kprintf("Kernel> ");
 	do_cursor(8);
 	idt_init();
 	pic_init();
